@@ -1,0 +1,29 @@
+﻿@model MaromFit.Models.ViewModel.PlanoUsuarioViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+
+    @{
+        var minhaClasse = Model.Planos.Count > 1 ? "classeTeste" : null;
+    }
+
+    <h1 class="@minhaClasse">@Model.Usuario.Name </h1>
+
+    @if (Model.Planos.Count > 0)
+    {
+        <ul>
+            @foreach (var plano in Model.Planos)
+            {
+                <li>@plano.Name / @plano.Value</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Não existem Planos!</p>
+    }
+
+
+</div>

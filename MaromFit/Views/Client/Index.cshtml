@@ -1,0 +1,28 @@
+﻿@model List<MaromFit.Models.Client>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Plano</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.Name</td>
+                <td>@client.Mail</td>
+                <td>@client.Plan.Name</td>
+            </tr>
+        }
+        
+    </tbody>
+</table> 
+
