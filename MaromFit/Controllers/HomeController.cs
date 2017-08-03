@@ -24,9 +24,9 @@ namespace MaromFit.Controllers
                 new Models.Plan() {Id=2, Name="Plano 2", Value = 200 }
             };
 
-            PlanoUsuarioViewModel model = new PlanoUsuarioViewModel();
-            model.Usuario = usuario;
-            model.Planos = lstPlanos;
+            UserPlanViewModel model = new UserPlanViewModel();
+            model.Client = usuario;
+            model.Plans = lstPlanos;
 
 
             return View(model);

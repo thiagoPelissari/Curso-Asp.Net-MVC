@@ -1,4 +1,4 @@
-﻿@model MaromFit.Models.ViewModel.PlanoUsuarioViewModel
+﻿@model MaromFit.Models.ViewModel.UserPlanViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -6,15 +6,15 @@
 <div class="jumbotron">
 
     @{
-        var minhaClasse = Model.Planos.Count > 1 ? "classeTeste" : null;
+        var minhaClasse = Model.Plans.Count > 1 ? "classeTeste" : null;
     }
 
-    <h1 class="@minhaClasse">@Model.Usuario.Name </h1>
+    <h1 class="@minhaClasse">@Model.Client.Name </h1>
 
-    @if (Model.Planos.Count > 0)
+    @if (Model.Plans.Count > 0)
     {
         <ul>
-            @foreach (var plano in Model.Planos)
+            @foreach (var plano in Model.Plans)
             {
                 <li>@plano.Name / @plano.Value</li>
             }

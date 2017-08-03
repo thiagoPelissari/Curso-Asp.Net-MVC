@@ -1,0 +1,44 @@
+﻿@model MaromFit.Models.ViewModel.UserPlanViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Acao</h2>
+
+@using (Html.BeginForm("Save", "Client"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Client.Name)
+        @Html.TextBoxFor(m => m.Client.Name , new {@class = "form-control"  })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Client.Mail)
+        @Html.TextBoxFor(m => m.Client.Mail, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Client.BirthDate)
+        @Html.TextBoxFor(m => m.Client.BirthDate,"{0:d MMM yyy}", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Client.SubscribeDate)
+        @Html.TextBoxFor(m => m.Client.SubscribeDate, "{0:d MMM yyy}", new { @class = "form-control" })
+    </div>
+   
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Client.IsSubscribedToNews) Receber Notícias
+        </label>
+    </div>
+
+    <div class="form-group">
+        @Html.DropDownListFor(m => m.Client.PlanId,new SelectList(Model.Plans,"Id","Name"),"Selecione um plano", new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(c=>c.Client.Id)
+
+    <button type="submit" class="btn btn-success">Criar</button>
+}
+
+

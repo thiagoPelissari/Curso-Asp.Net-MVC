@@ -223,13 +223,21 @@
     <Compile Include="Migrations\201706161812595_ChangeNameInPlan.Designer.cs">
       <DependentUpon>201706161812595_ChangeNameInPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707051318029_AddIsSubscribedToNewsToClient.cs" />
+    <Compile Include="Migrations\201707051318029_AddIsSubscribedToNewsToClient.Designer.cs">
+      <DependentUpon>201707051318029_AddIsSubscribedToNewsToClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707051356525_ChangeFieldsInClient.cs" />
+    <Compile Include="Migrations\201707051356525_ChangeFieldsInClient.Designer.cs">
+      <DependentUpon>201707051356525_ChangeFieldsInClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\ViewModel\PlanoUsuarioViewModel.cs" />
+    <Compile Include="Models\ViewModel\UserPlanViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -292,9 +300,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Plan\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Client\ClientForm.cshtml" />
+    <Content Include="Views\Client\Delete.cshtml" />
+    <Content Include="Views\Plan\Create.cshtml" />
+    <Content Include="Views\Plan\Delete.cshtml" />
+    <Content Include="Views\Plan\Details.cshtml" />
+    <Content Include="Views\Plan\Edit.cshtml" />
+    <Content Include="Views\Plan\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -322,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706161812595_ChangeNameInPlan.resx">
       <DependentUpon>201706161812595_ChangeNameInPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707051318029_AddIsSubscribedToNewsToClient.resx">
+      <DependentUpon>201707051318029_AddIsSubscribedToNewsToClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707051356525_ChangeFieldsInClient.resx">
+      <DependentUpon>201707051356525_ChangeFieldsInClient.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

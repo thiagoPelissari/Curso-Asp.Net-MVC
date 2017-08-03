@@ -4,13 +4,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<script type="text/javascript">
+    function DeleteClient(idClient)
+    {
+        var redirectPage = "http://" + window.location.host + "/Client/Delete/" + idClient;
+        window.location.replace(redirectPage);
+        
+    }
+</script>
+<br />
+@Html.ActionLink("Novo Cliente", "New",null, new { @class = "btn btn-success" })
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>Nome</th>
             <th>Email</th>
             <th>Plano</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -20,9 +30,11 @@
                 <td>@client.Name</td>
                 <td>@client.Mail</td>
                 <td>@client.Plan.Name</td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = client.Id }, new {@class="btn btn-warning" })
+                    <button class="btn btn-danger" onclick="DeleteClient(@client.Id)">Excluir</button>
+                </td>
             </tr>
         }
-        
     </tbody>
-</table> 
-
+</table>

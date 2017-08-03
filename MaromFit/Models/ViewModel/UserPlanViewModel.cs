@@ -5,9 +5,9 @@ using System.Web;
 
 namespace MaromFit.Models.ViewModel
 {
-    public class PlanoUsuarioViewModel
+    public class UserPlanViewModel
     {
-        public Client Usuario { get; set; }
-        public List<Plan> Planos { get; set; }
+        public Client Client { get; set; }
+        public List<Plan> Plans { get; set; }
     }
 }
