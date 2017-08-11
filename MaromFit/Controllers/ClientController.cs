@@ -57,7 +57,8 @@ namespace MaromFit.Controllers
 
             UserPlanViewModel viewModel = new UserPlanViewModel
             {
-                Plans = plans,
+                Client = new Client(),
+                Plans = plans
             };
 
             ViewBag.Acao = "Novo Usuário";
@@ -85,10 +86,25 @@ namespace MaromFit.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Client Client)
         {
+
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new UserPlanViewModel
+                {
+                    Plans = _context.Plan.ToList(),
+                    Client = Client
+                };
+                ViewBag.Acao = "Novo Usuário";
+
+                return View("ClientForm", viewModel);
+            }
+
             if(Client.Id == 0)
             {
+                Client.SubscribeDate = DateTime.Now;
                 _context.Client.Add(Client);
             }
             else
@@ -100,10 +116,7 @@ namespace MaromFit.Controllers
                 clientInDb.PlanId = Client.PlanId;
                 clientInDb.SubscribeDate = Client.SubscribeDate;
                 clientInDb.IsSubscribedToNews = Client.IsSubscribedToNews;
-
-
             }
-
 
             _context.SaveChanges();
             return RedirectToAction("Index","Client");

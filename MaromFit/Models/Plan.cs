@@ -14,5 +14,8 @@ namespace MaromFit.Models
         [StringLength(100)]
         public string Name { get; set; }
         public float Value { get; set; }
+
+        public static readonly byte Desconhecido = 0;
+        public static readonly byte PlanoLivre = 4;
     }
 }

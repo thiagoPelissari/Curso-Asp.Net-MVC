@@ -59,7 +59,7 @@ namespace MaromFit.Controllers
         }
 
         // GET: Plan/Edit/5
-        [Route("editarPlanos/{planoId:regex(\\d{2}):range(1,10)}/{name}")]
+        //[Route("editarPlanos/{planoId:regex(\\d{2}):range(1,10)}/{name}")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
