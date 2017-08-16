@@ -24,6 +24,12 @@ namespace MaromFit.Controllers
             return View(clientes);
         }
 
+        public ActionResult IndexApi()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult Delete(Client client)
         {

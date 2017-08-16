@@ -29,7 +29,7 @@ namespace MaromFit.Controllers
             string nCdServico = "41106";
             // Cep de origem e destino - apenas números
             string sCepOrigem = "19940000";
-            string sCepDestino = "06192220";
+            string sCepDestino = cep;
             // Peso total da encomenda - por padrão deixei 1kg
             string nVlPeso = Convert.ToString(1);
             // Formato da encomenda - por padrão deixei caixa

@@ -14,6 +14,7 @@ namespace MaromFit.App_Start
         {
             Mapper.CreateMap<Client, ClientDto>();
             Mapper.CreateMap<ClientDto, Client>();
+            Mapper.CreateMap<Plan, PlanDto>();
         }
     }
 }

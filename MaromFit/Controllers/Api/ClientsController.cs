@@ -3,6 +3,7 @@ using MaromFit.Dtos;
 using MaromFit.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,7 +23,7 @@ namespace MaromFit.Controllers.Api
         //GET /api/clients
         public IHttpActionResult GetClient()
         {
-            return Ok(_context.Client.ToList().Select(Mapper.Map<Client, ClientDto>));
+            return Ok(_context.Client.Include(c=> c.Plan).ToList().Select(Mapper.Map<Client, ClientDto>));
         }
 
 

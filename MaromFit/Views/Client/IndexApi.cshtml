@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "IndexApi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .modal-dialog{
+        left:0;
+    }
+</style>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+        
+        var dataTable = $("#client").DataTable({
+            ajax: {
+                url: "/api/clients",
+                dataSrc:""
+            },
+            columns: [
+                {
+                    data:"name"
+                },
+                {
+                    data:"mail"
+                },
+                {
+                    data: "plan.name"
+                },
+                {
+                    data: "id",
+                    render: function(data,type, client)
+                    {
+                        return "<a href='/Client/Edit/' "+ client.id +"  class='btn btn-warning'> Editar </a>" +
+                        " <button data-client-id=' " + data + " ' class='btn btn-danger js-excluir'>Excluir</button>";
+                    }
+                }
+            ],
+            "oLanguage":{
+    "sEmptyTable": "Nenhum registro encontrado",
+            "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+            "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ".",
+            "sLengthMenu": "_MENU_ resultados por página",
+            "sLoadingRecords": "Carregando...",
+            "sProcessing": "Processando...",
+            "sZeroRecords": "Nenhum registro encontrado",
+            "sSearch": "Pesquisar",
+            "oPaginate": {
+                "sNext": "Próximo",
+                "sPrevious": "Anterior",
+                "sFirst": "Primeiro",
+                "sLast": "Útimo"
+            },
+            "oAria": {
+                "sSortAscending": ": Ordenar colunas de forma ascendente",
+                "sSortDescending": ": Ordenar colunas de forma descendente"
+            }
+        }
+        });
+
+        $("#client").on("click", ".js-excluir", function () {
+            var button = $(this);
+
+            bootbox.confirm("Deseja excluir este cliente ?", function (result) {
+                if (result) {
+                    $.ajax({
+                        url: "/api/clients/" + button.attr("data-client-id"),
+                        method: "DELETE",
+                        success: function () {
+                            dataTable.row(button.parents("tr")).remove().draw();
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+<h1>Index API</h1>
+<br />
+@Html.ActionLink("Novo Cliente", "New",null, new { @class = "btn btn-success" })
+<table id="client" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Plano</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

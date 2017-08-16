@@ -28,6 +28,8 @@ namespace MaromFit.Dtos
 
         public bool IsSubscribedToNews { get; set; }
 
+        public PlanDto Plan { get; set; }
+
         public int PlanId { get; set; }
     }
 }
