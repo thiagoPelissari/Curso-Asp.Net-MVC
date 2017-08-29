@@ -10,14 +10,25 @@ using MaromFit.Models;
 
 namespace MaromFit.Controllers
 {
+    [Authorize]
     public class PlanController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Plan
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            return View(db.Plan.ToList());
+            if(User.IsInRole(RoleName.GerenteGeral))
+            {
+                return View(db.Plan.ToList());
+            }
+            else
+            {
+                return View("ReadOnly",db.Plan.ToList());
+            }
+
+            
         }
 
         // GET: Plan/Details/5
@@ -36,6 +47,7 @@ namespace MaromFit.Controllers
         }
 
         // GET: Plan/Create
+        [Authorize(Roles = RoleName.GerenteGeral)]
         public ActionResult Create()
         {
             return View();

@@ -7,16 +7,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Marom Fit", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Marom Fit", "Index", "Home", "http", "", null, new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Vendas", "Index", "Sales")</li>
-                <li>@Html.ActionLink("Planos", "Index", "Plan")</li>
-                <li>@Html.ActionLink("Clientes", "Index", "Client")</li>
-                <li>@Html.ActionLink("ClientesAPI", "IndexApi", "Client")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Vendas", "Index", "Sales", "http", "", null, null, null)</li>
+                <li>@Html.ActionLink("Planos", "Index", "Plan","http", "",null,null,null)</li>
+                <li>@Html.ActionLink("Clientes", "Index", "Client", "http", "", null, null, null)</li>
+                <li>@Html.ActionLink("ClientesAPI", "IndexApi", "Client", "http", "", null, null, null)</li>
+                <li>@Html.ActionLink("About", "About", "Home", "http", "", null, null, null)</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", "http", "", null, null, null)</li>
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
