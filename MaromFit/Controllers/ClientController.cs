@@ -49,6 +49,7 @@ namespace MaromFit.Controllers
 
         public ActionResult Delete(int id)
         {
+
             var client = _context.Client.Find(id);
             if (client == null)
                 return HttpNotFound();

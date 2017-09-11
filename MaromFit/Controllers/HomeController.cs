@@ -10,6 +10,13 @@ namespace MaromFit.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        [OutputCache(Duration = 10)]
         public ActionResult Index()
         {
             Client usuario = new Client()
@@ -18,11 +25,20 @@ namespace MaromFit.Controllers
                 Name = "Thiago"
             };
 
-            var lstPlanos = new List<Plan>()
+            //var lstPlanos = new List<Plan>()
+            //{
+            //    new Models.Plan() {Id=1, Name="Plano 1", Value = 100 },
+            //    new Models.Plan() {Id=2, Name="Plano 2", Value = 200 }
+            //};
+
+            if(HttpContext.Cache["Planos"] == null)
             {
-                new Models.Plan() {Id=1, Name="Plano 1", Value = 100 },
-                new Models.Plan() {Id=2, Name="Plano 2", Value = 200 }
-            };
+                HttpContext.Cache["Planos"] = _context.Plan.ToList();
+            }
+
+            var lstPlanos = (List<Plan>)HttpContext.Cache["Planos"];
+
+            //HttpContext.Cache.Remove("Planos");
 
             UserPlanViewModel model = new UserPlanViewModel();
             model.Client = usuario;
