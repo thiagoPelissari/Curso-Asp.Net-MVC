@@ -10,21 +10,17 @@
         var minhaClasse = Model.Plans.Count > 1 ? "classeTeste" : null;
     }
 
-    <h1 class="@minhaClasse">@Model.Client.Name @DateTime.Now.ToString()</h1>
+    <div class="row">
+        <div class="col-md-12 visible-md visible-lg text-center">
+            <img src="~/Images/SmartFitG.png" width="700" height="250"/>
+            <h3>MaromFit Academia</h3>
+        </div>
+        <div class="col-sm-12 hidden-md hidden-lg text-center">
+            <img src="~/Images/SmartFitP.jpg" style="border-radius:50%" />
+            <h3>MaromFit Academia</h3>
+        </div>
+    </div>
 
-    @if (Model.Plans.Count > 0)
-    {
-        <ul>
-            @foreach (var plano in Model.Plans)
-            {
-                <li>@plano.Name / @plano.Value</li>
-            }
-        </ul>
-    }
-    else
-    {
-        <p>Não existem Planos!</p>
-    }
-
+    
 
 </div>

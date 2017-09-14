@@ -1,17 +1,54 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model MaromFit.Models.ViewModel.Mail
+@{
+    ViewBag.Title = "Contato";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@using (Html.BeginForm("SendMail", "Account", FormMethod.Post,
+    new { @id = "sendMailForm", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(c => c.Name, new { @for = "Name", @class = "control-label col-sm-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c=>c.Name , new {@class="form-control", @id="Name" })
+                    @Html.ValidationMessageFor(m=>m.Name)
+                </div>
+            </div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+            <div class="form-group">
+                @Html.LabelFor(c => c.UserMail, new { @for = "UserMail", @class = "control-label col-sm-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.UserMail, new { @class = "form-control", @id = "UserMail" })
+                    @Html.ValidationMessageFor(m => m.UserMail)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(c => c.Subject, new { @for = "Subject", @class = "control-label col-sm-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(c => c.Subject, new { @class = "form-control", @id = "Subject" })
+                    @Html.ValidationMessageFor(m => m.Subject)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(c => c.Message, new { @for = "Message", @class = "control-label col-sm-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(c => c.Message, new { @class = "form-control", @id = "Message" })
+                    @Html.ValidationMessageFor(m => m.Message)
+                </div>
+            </div>
+
+            <input type="submit" value="Enviar" class="btn btn-success"/>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -5,15 +5,50 @@
 }
 
 <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        var clients = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/api/clients?query=%QUERY',
+                wildcard: '%QUERY'
+            }
+        });
+
+        $('#txtClients').typeahead({
+            minLength: 3,
+            highlight: true
+
+        }, {
+            name: 'clients',
+            display: 'name',
+            source: clients
+        }).on("typeahead:select", function (e, client) {
+            $(".table > tbody").html("<tr><td>" +
+                client.name + "</td><td>" +
+                client.mail + "</td><td>" +
+                client.plan.name + "</td><td>"+
+                "<a href='/Client/Edit/" + client.id + "' class='btn btn-warning' >Editar</a>"+
+                "<button class='btn btn-danger' onclick='DeleteClient(" + client.id + ")'>Excluir</button>" +
+                "</td></tr>");
+        });
+
+    });
+
     function DeleteClient(idClient)
     {
         var redirectPage = "http://" + window.location.host + "/Client/Delete/" + idClient;
         window.location.replace(redirectPage);
-        
+
     }
 </script>
 <br />
 @Html.ActionLink("Novo Cliente", "New",null, new { @class = "btn btn-success" })
+
+<input type="text" id="txtClients" class="form-control" placeholder="Pesquisar...">
+<a href="">Limpar Dados</a>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>

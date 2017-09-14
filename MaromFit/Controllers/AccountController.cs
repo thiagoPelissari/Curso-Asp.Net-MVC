@@ -10,11 +10,13 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MaromFit.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using MaromFit.Models.ViewModel;
+using MaromFit.Util;
 
 namespace MaromFit.Controllers
 {
     [Authorize]
-    [RequireHttps]
+    //[RequireHttps]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -29,6 +31,22 @@ namespace MaromFit.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        public ActionResult SendMail(Mail mail)
+        {
+            bool chkSendMail = new MailTo().SendMail(mail);
+            if(chkSendMail)
+            {
+                return Content("true", "text/html");
+            }else
+            {
+                return Content("false", "text/html");
+            }
+        }
+
 
         public ApplicationSignInManager SignInManager
         {

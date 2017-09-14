@@ -4,9 +4,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+
+            if($("#frmSaveClient").valid())
+            {
+                toastr.success("Cliente Inserido com sucesso!");
+
+                setTimeout(function () {
+                    $("#frmSaveClient").submit();
+                }, 2000)
+
+                
+            }
+            else {
+                toastr.error("Formulário inválido!");
+            }
+
+        });
+
+        $("#dataNiver").datepicker({
+            dateFormat: 'dd/mm/yy',
+            locale: 'pt-br',
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            nextText: 'Próximo',
+            prevText: 'Anterior'
+        });
+    });
+</script>
+
 <h2>@ViewBag.Acao</h2>
 
-@using (Html.BeginForm("Save", "Client"))
+@using (Html.BeginForm("Save", "Client",FormMethod.Post,new {@id="frmSaveClient" }))
 {
     @Html.ValidationSummary(true,"Verifique os erros abaixo!")
 
@@ -29,7 +68,7 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.Client.BirthDate)
-        @Html.TextBoxFor(m => m.Client.BirthDate,"{0:d MMM yyy}", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Client.BirthDate,"{0:d MMM yyy}", new {@id="dataNiver", @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Client.BirthDate)
     </div>
    
@@ -41,7 +80,7 @@
 
     @Html.HiddenFor(c=>c.Client.Id)
 
-    <button type="submit" class="btn btn-success">Criar</button>
+    <button id="btnSubmit" type="submit" class="btn btn-success">Criar</button>
 
     @Html.AntiForgeryToken()
 }

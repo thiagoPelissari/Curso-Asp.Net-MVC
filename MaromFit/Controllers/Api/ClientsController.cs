@@ -21,9 +21,22 @@ namespace MaromFit.Controllers.Api
         }
 
         //GET /api/clients
-        public IHttpActionResult GetClient()
+        public IHttpActionResult GetClient(string query = null)
         {
-            return Ok(_context.Client.Include(c=> c.Plan).ToList().Select(Mapper.Map<Client, ClientDto>));
+
+            var clientsQuery = _context.Client.Include(c => c.Plan);
+
+            if (!string.IsNullOrEmpty(query))
+               clientsQuery = clientsQuery.Where(w => w.Name.Contains(query));
+            
+            
+            var clients = clientsQuery
+                    .ToList()
+                    .Select(Mapper.Map<Client, ClientDto>);
+            
+
+
+                return Ok(clients);
         }
 
 
