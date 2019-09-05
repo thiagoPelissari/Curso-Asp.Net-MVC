@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaromFit", "MaromFit\MaromFit.csproj", "{C1034C57-BE38-48E3-9C56-EE90A728A1AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseFirstConsole", "DatabaseFirstConsole\DatabaseFirstConsole.csproj", "{57A36433-D890-40DD-90EE-8A02B71BEDC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseFIrstMVC", "DatabaseFIrstMVC\DatabaseFIrstMVC.csproj", "{C90000AD-1181-43A2-8E1E-F6D901FC6F50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,19 @@ Global
 		{C1034C57-BE38-48E3-9C56-EE90A728A1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1034C57-BE38-48E3-9C56-EE90A728A1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1034C57-BE38-48E3-9C56-EE90A728A1AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57A36433-D890-40DD-90EE-8A02B71BEDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57A36433-D890-40DD-90EE-8A02B71BEDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57A36433-D890-40DD-90EE-8A02B71BEDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57A36433-D890-40DD-90EE-8A02B71BEDC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C90000AD-1181-43A2-8E1E-F6D901FC6F50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C90000AD-1181-43A2-8E1E-F6D901FC6F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C90000AD-1181-43A2-8E1E-F6D901FC6F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C90000AD-1181-43A2-8E1E-F6D901FC6F50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9BCB04B-3BEF-4186-9405-D14834702798}
 	EndGlobalSection
 EndGlobal
